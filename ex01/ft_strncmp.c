@@ -6,7 +6,7 @@
 /*   By: ozugazag <ozugazag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 10:34:03 by ozugazag          #+#    #+#             */
-/*   Updated: 2025/07/18 11:01:04 by ozugazag         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:30:17 by ozugazag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	if (i == n)
-		return (0);
-	while (*s1 && (*s1 == *s2) && i < n)
+	while (i < n && *s1 && *s2)
 	{
+		if ((unsigned char)*s1 != (unsigned char)*s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
 		s1++;
 		s2++;
 		i++;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	if (i < n)
+		return ((unsigned char)*s1 - (unsigned char)*s2);
+	return (0);
 }
 // int	main(void)
 // {
